@@ -1,5 +1,7 @@
 "use client";
 
+import React from "react";
+
 export default function Error({
   error,
   reset,
@@ -7,6 +9,11 @@ export default function Error({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  React.useEffect(() => {
+    // Log the error to an error reporting service
+    console.error(error);
+  }, [error]);
+
   return (
     <main className="flex h-full flex-col items-center justify-center">
       <h2 className="text-center">Something went wrong!</h2>
